@@ -1,7 +1,7 @@
 import { Connection } from 'mongoose';
 import { ProjectSchema } from '../repositories/project.schema';
 
-export const projectsProviders = [
+export const projectProviders = [
   {
     provide: 'PROJECTS_MODEL',
     useFactory: (connection: Connection) =>
