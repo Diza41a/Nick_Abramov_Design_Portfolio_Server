@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { ProjectsService } from '../services/projects.service';
-import { Project } from '../interfaces/project';
+import { Project } from '../domains/project';
 
 @Controller('projects')
 export class ProjectsController {

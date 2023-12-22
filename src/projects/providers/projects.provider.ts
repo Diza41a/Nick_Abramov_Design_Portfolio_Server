@@ -1,5 +1,5 @@
 import { Connection } from 'mongoose';
-import { ProjectSchema } from '../schemas/project.schema';
+import { ProjectSchema } from '../repositories/project.schema';
 
 export const projectsProviders = [
   {

@@ -1,6 +1,6 @@
 import { Model } from 'mongoose';
 import { Injectable, Inject } from '@nestjs/common';
-import { Project } from '../interfaces/project';
+import { Project } from '../domains/project';
 
 @Injectable()
 export class ProjectsService {
