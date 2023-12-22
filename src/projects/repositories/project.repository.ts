@@ -26,4 +26,18 @@ export class ProjectRepository {
 
     return newProject.save();
   }
+
+  update(id: string, project: ProjectDocument): Promise<ProjectDocument> {
+    const updatedProject = this.projectModel.findByIdAndUpdate(id, project, {
+      new: true,
+    });
+
+    return updatedProject;
+  }
+
+  delete(id: string): Promise<ProjectDocument> {
+    const deletedProject = this.projectModel.findByIdAndDelete(id);
+
+    return deletedProject as unknown as Promise<ProjectDocument>;
+  }
 }

@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ProjectService } from '../services/project.service';
 import { ProjectOutputDto } from './output/projectOutputDto';
 import { ProjectInputDto } from './input/projectInputDto';
@@ -18,7 +26,20 @@ export class ProjectsController {
   }
 
   @Post('')
-  create(@Body() projectInputDto: ProjectInputDto): Promise<void> {
+  create(@Body() projectInputDto: ProjectInputDto): Promise<ProjectOutputDto> {
     return this.projectService.create(projectInputDto);
+  }
+
+  @Put('/:id')
+  update(
+    @Param() params: { id: string },
+    @Body() projectInputDto: ProjectInputDto,
+  ): Promise<ProjectOutputDto> {
+    return this.projectService.update(params.id, projectInputDto);
+  }
+
+  @Delete('/:id')
+  delete(@Param() params: { id: string }): Promise<ProjectOutputDto> {
+    return this.projectService.delete(params.id);
   }
 }

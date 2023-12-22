@@ -13,5 +13,5 @@ export const ProjectSchema = new Schema(
     dateCreated: Number,
     descriptionBullets: [String],
   },
-  { collection: 'Projects' },
+  { collection: 'projects' },
 );

@@ -9,7 +9,7 @@ export const projectProviders = [
   {
     provide: 'PROJECTS_MODEL',
     useFactory: (connection: Connection) =>
-      connection.model('Projects', ProjectSchema),
+      connection.model('projects', ProjectSchema),
     inject: ['DATABASE_CONNECTION'],
   },
   ProjectInputDtoMapper,
