@@ -1,15 +1,12 @@
 import mongoose from 'mongoose';
 
-const MONGODB_USERNAME = 'NicAdminTest';
-const MONGODB_PASSWORD = 'Password321';
-const DB_NAME = 'Portfolio';
+const { MONGODB_URI, DB_NAME } = process.env;
 
-const databaseUri = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@nicportfolio.us574mw.mongodb.net/?retryWrites=true&w=majority`;
 export const databaseProviders = [
   {
     provide: 'DATABASE_CONNECTION',
     useFactory: (): Promise<typeof mongoose> =>
-      mongoose.connect(databaseUri, {
+      mongoose.connect(MONGODB_URI, {
         dbName: DB_NAME,
       }),
   },
