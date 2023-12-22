@@ -4,6 +4,7 @@ import { ProjectInputDtoMapper } from '../controllers/input/projectInputDtoMappe
 import { ProjectOutputDtoMapper } from '../controllers/output/projectOutputDtoMapper';
 import { ProjectRepository } from '../repositories/project.repository';
 import { ProjectService } from '../services/project.service';
+import { ProjectSummaryOutputDtoMapper } from '../controllers/output/projectSummaryOutputDtoMapper';
 
 export const projectProviders = [
   {
@@ -14,6 +15,7 @@ export const projectProviders = [
   },
   ProjectInputDtoMapper,
   ProjectOutputDtoMapper,
+  ProjectSummaryOutputDtoMapper,
   ProjectRepository,
   ProjectService,
 ];

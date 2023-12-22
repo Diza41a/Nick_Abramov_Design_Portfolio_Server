@@ -4,19 +4,27 @@ import { ProjectOutputDtoMapper } from '../controllers/output/projectOutputDtoMa
 import { ProjectOutputDto } from '../controllers/output/projectOutputDto';
 import { ProjectInputDto } from '../controllers/input/projectInputDto';
 import { ProjectInputDtoMapper } from '../controllers/input/projectInputDtoMapper';
+import { ProjectSummaryOutputDtoMapper } from '../controllers/output/projectSummaryOutputDtoMapper';
+import { ProjectSummaryOutputDto } from '../controllers/output/projectSummaryOutputDto';
 
 @Injectable()
 export class ProjectService {
   constructor(
     private readonly projectsRepository: ProjectRepository,
     private readonly projectOutputDtoMapper: ProjectOutputDtoMapper,
+    private readonly projectSummaryOutputDtoMapper: ProjectSummaryOutputDtoMapper,
     private readonly projectInputDtoMapper: ProjectInputDtoMapper,
   ) {}
 
-  async getAll(): Promise<Array<ProjectOutputDto>> {
+  async getAll(
+    summary: boolean,
+  ): Promise<Array<ProjectOutputDto | ProjectSummaryOutputDto>> {
     const projectDocuments = await this.projectsRepository.findAll();
+    const mapper = summary
+      ? this.projectSummaryOutputDtoMapper
+      : this.projectOutputDtoMapper;
     const projectsOutputDto = projectDocuments.map((projectDocument) =>
-      this.projectOutputDtoMapper.map(projectDocument),
+      mapper.map(projectDocument),
     );
 
     return projectsOutputDto;

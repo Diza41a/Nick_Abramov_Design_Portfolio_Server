@@ -4,20 +4,25 @@ import {
   Delete,
   Get,
   Param,
+  ParseBoolPipe,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { ProjectService } from '../services/project.service';
 import { ProjectOutputDto } from './output/projectOutputDto';
 import { ProjectInputDto } from './input/projectInputDto';
+import { ProjectSummaryOutputDto } from './output/projectSummaryOutputDto';
 
 @Controller('projects')
 export class ProjectsController {
   constructor(private readonly projectService: ProjectService) {}
 
   @Get('')
-  getAll(): Promise<Array<ProjectOutputDto>> {
-    return this.projectService.getAll();
+  getAll(
+    @Query('summary', ParseBoolPipe) summary: boolean = false,
+  ): Promise<Array<ProjectOutputDto | ProjectSummaryOutputDto>> {
+    return this.projectService.getAll(summary);
   }
 
   @Get('/:id')
