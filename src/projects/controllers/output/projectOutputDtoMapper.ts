@@ -2,13 +2,13 @@ import { ProjectDocument } from '../../repositories/project';
 import { ProjectOutputDto } from './projectOutputDto';
 
 export class ProjectOutputDtoMapper {
-  public static map(project: ProjectDocument): ProjectOutputDto {
+  map(projectDocument: ProjectDocument): ProjectOutputDto {
     const projectOutputDto = new ProjectOutputDto(
-      project.id,
-      project.name,
-      project.category,
-      project.dateCreated,
-      project.descriptionBullets,
+      projectDocument._id,
+      projectDocument.name,
+      projectDocument.category,
+      projectDocument.dateCreated,
+      projectDocument.descriptionBullets,
     );
     return projectOutputDto;
   }
