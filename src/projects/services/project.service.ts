@@ -44,11 +44,15 @@ export class ProjectService {
     name,
     category,
     descriptionBullets,
+    mainImagePath,
+    gallery = [],
   }: ProjectInputDto): Promise<ProjectOutputDto> {
     const projectInputDto = new ProjectInputDto(
       name,
       category,
       descriptionBullets,
+      mainImagePath,
+      gallery,
     );
     const missingFields = projectInputDto.getMissingFields();
     if (missingFields.length > 0) {
@@ -66,16 +70,27 @@ export class ProjectService {
 
   async update(
     id: string,
-    { name, category, descriptionBullets }: ProjectInputDto,
+    {
+      name,
+      category,
+      descriptionBullets,
+      mainImagePath,
+      gallery,
+    }: ProjectInputDto,
   ): Promise<ProjectOutputDto> {
     const projectDocument = await this.projectsRepository.findById(id);
     if (!projectDocument) {
       throw new HttpException(`Project with id ${id} not found`, 404);
     }
+
     projectDocument.name = name || projectDocument.name;
     projectDocument.category = category || projectDocument.category;
     projectDocument.descriptionBullets =
       descriptionBullets || projectDocument.descriptionBullets;
+    projectDocument.mainImagePath =
+      mainImagePath || projectDocument.mainImagePath;
+    projectDocument.gallery = gallery || projectDocument.gallery;
+
     const updatedProjectDocument = await this.projectsRepository.update(
       id,
       projectDocument,
@@ -83,7 +98,6 @@ export class ProjectService {
     const projectOutputDto = this.projectOutputDtoMapper.map(
       updatedProjectDocument,
     );
-
     return projectOutputDto;
   }
 

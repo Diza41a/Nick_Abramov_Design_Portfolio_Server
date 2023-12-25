@@ -4,7 +4,6 @@ import {
   Delete,
   Get,
   Param,
-  ParseBoolPipe,
   Post,
   Put,
   Query,
@@ -15,6 +14,7 @@ import { ProjectOutputDto } from './output/projectOutputDto';
 import { ProjectInputDto } from './input/projectInputDto';
 import { ProjectSummaryOutputDto } from './output/projectSummaryOutputDto';
 import { AuthGuard } from '../../auth/services/auth.guard';
+import { GetAllProjectsQueryDto } from './query/queryValidation.pipe';
 
 @Controller('projects')
 export class ProjectsController {
@@ -22,7 +22,7 @@ export class ProjectsController {
 
   @Get('')
   getAll(
-    @Query('summary', ParseBoolPipe) summary: boolean = false,
+    @Query() { summary }: GetAllProjectsQueryDto,
   ): Promise<Array<ProjectOutputDto | ProjectSummaryOutputDto>> {
     return this.projectService.getAll(summary);
   }

@@ -8,6 +8,7 @@ export class ProjectSummaryOutputDtoMapper {
       projectDocument.name,
       projectDocument.category,
       projectDocument.dateCreated,
+      projectDocument.mainImagePath,
     );
     return projectSummaryOutputDto;
   }

@@ -9,6 +9,8 @@ export class ProjectOutputDtoMapper {
       projectDocument.category,
       projectDocument.dateCreated,
       projectDocument.descriptionBullets,
+      projectDocument.mainImagePath,
+      projectDocument.gallery,
     );
     return projectOutputDto;
   }
