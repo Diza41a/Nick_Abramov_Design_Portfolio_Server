@@ -5,6 +5,7 @@ export class ProjectInputDto {
   category?: string;
   descriptionBullets?: Array<string>;
   mainImagePath?: string;
+  isGallerySpaced?: boolean;
   gallery?: Array<ProjectGalleryRow>;
 
   constructor(
@@ -12,12 +13,14 @@ export class ProjectInputDto {
     category: string,
     descriptionBullets: Array<string>,
     mainImagePath: string,
+    isGallerySpaced: boolean,
     gallery: Array<ProjectGalleryRow>,
   ) {
     this.name = name;
     this.category = category;
     this.descriptionBullets = descriptionBullets;
     this.mainImagePath = mainImagePath;
+    this.isGallerySpaced = isGallerySpaced;
     this.gallery = gallery;
   }
 
@@ -27,6 +30,7 @@ export class ProjectInputDto {
       'category',
       'descriptionBullets',
       'mainImagePath',
+      'isGallerySpaced',
       'gallery',
     ];
     const missingFields = [];

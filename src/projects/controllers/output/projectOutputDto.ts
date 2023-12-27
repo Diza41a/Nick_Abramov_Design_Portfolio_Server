@@ -7,6 +7,7 @@ export class ProjectOutputDto {
   dateCreated: number;
   descriptionBullets: Array<string>;
   mainImagePath: string;
+  isGallerySpaced: boolean;
   gallery: Array<ProjectGalleryRow>;
 
   constructor(
@@ -16,6 +17,7 @@ export class ProjectOutputDto {
     dateCreated: number,
     descriptionBullets: Array<string>,
     mainImagePath: string,
+    isGallerySpaced: boolean,
     gallery: Array<ProjectGalleryRow>,
   ) {
     this.id = id;
@@ -24,6 +26,7 @@ export class ProjectOutputDto {
     this.dateCreated = dateCreated;
     this.descriptionBullets = descriptionBullets;
     this.mainImagePath = mainImagePath;
+    this.isGallerySpaced = isGallerySpaced;
     this.gallery = gallery;
   }
 }

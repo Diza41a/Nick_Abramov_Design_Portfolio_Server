@@ -45,6 +45,7 @@ export class ProjectService {
     category,
     descriptionBullets,
     mainImagePath,
+    isGallerySpaced,
     gallery = [],
   }: ProjectInputDto): Promise<ProjectOutputDto> {
     const projectInputDto = new ProjectInputDto(
@@ -52,6 +53,7 @@ export class ProjectService {
       category,
       descriptionBullets,
       mainImagePath,
+      isGallerySpaced,
       gallery,
     );
     const missingFields = projectInputDto.getMissingFields();
@@ -75,6 +77,7 @@ export class ProjectService {
       category,
       descriptionBullets,
       mainImagePath,
+      isGallerySpaced,
       gallery,
     }: ProjectInputDto,
   ): Promise<ProjectOutputDto> {
@@ -89,6 +92,8 @@ export class ProjectService {
       descriptionBullets || projectDocument.descriptionBullets;
     projectDocument.mainImagePath =
       mainImagePath || projectDocument.mainImagePath;
+    projectDocument.isGallerySpaced =
+      isGallerySpaced || projectDocument.isGallerySpaced;
     projectDocument.gallery = gallery || projectDocument.gallery;
 
     const updatedProjectDocument = await this.projectsRepository.update(

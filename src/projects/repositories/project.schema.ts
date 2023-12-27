@@ -23,6 +23,7 @@ export const ProjectSchema = new Schema(
     dateCreated: Number,
     descriptionBullets: [String],
     mainImagePath: String,
+    isGallerySpaced: Boolean,
     gallery: [ProjectGalleryRow],
   },
   { collection: 'projects' },
