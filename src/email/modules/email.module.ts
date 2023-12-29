@@ -14,8 +14,8 @@ import { MailService } from '../services/email.service';
           port: 465,
           secure: true,
           auth: {
-            user: 'Diza41a@mail.com',
-            pass: '123dav321',
+            user: '',
+            pass: '',
           },
         },
       }),
