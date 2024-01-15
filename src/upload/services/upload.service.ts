@@ -24,7 +24,6 @@ export class UploadService {
         return url;
       })
       .catch((err) => {
-        console.log(err.response.data.error.message);
         throw new InternalServerErrorException(err.response.data.error.message);
       });
   }
