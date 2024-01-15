@@ -10,7 +10,7 @@ export class UploadService {
 
   async uploadImage(imageHashString: string): Promise<string> {
     const imageHash = imageHashString.replace(
-      /^data:image\/(png|jpg);base64,/,
+      /^data:image\/(png|jpg|jpeg|gif);base64,/,
       '',
     );
     return axios
@@ -24,6 +24,7 @@ export class UploadService {
         return url;
       })
       .catch((err) => {
+        console.log(err.response.data.error.message);
         throw new InternalServerErrorException(err.response.data.error.message);
       });
   }
