@@ -35,7 +35,7 @@ export class ProjectInputDto {
     ];
     const missingFields = [];
     for (const field of fieldsToValidate) {
-      if (!this[field]) {
+      if (this[field] == undefined || this[field] == null) {
         missingFields.push(field);
       }
     }
