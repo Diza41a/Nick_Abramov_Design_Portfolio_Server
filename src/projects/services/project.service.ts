@@ -93,7 +93,9 @@ export class ProjectService {
     projectDocument.mainImagePath =
       mainImagePath || projectDocument.mainImagePath;
     projectDocument.isGallerySpaced =
-      isGallerySpaced || projectDocument.isGallerySpaced;
+      isGallerySpaced !== undefined
+        ? isGallerySpaced
+        : projectDocument.isGallerySpaced;
     projectDocument.gallery = gallery || projectDocument.gallery;
 
     const updatedProjectDocument = await this.projectsRepository.update(
