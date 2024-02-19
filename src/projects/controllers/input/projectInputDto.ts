@@ -3,7 +3,7 @@ import { ProjectGalleryRow } from '../../../projects/repositories/project';
 export class ProjectInputDto {
   name?: string;
   category?: string;
-  descriptionBullets?: Array<string>;
+  description?: string;
   mainImagePath?: string;
   isGallerySpaced?: boolean;
   gallery?: Array<ProjectGalleryRow>;
@@ -11,14 +11,14 @@ export class ProjectInputDto {
   constructor(
     name: string,
     category: string,
-    descriptionBullets: Array<string>,
+    description: string,
     mainImagePath: string,
     isGallerySpaced: boolean,
     gallery: Array<ProjectGalleryRow>,
   ) {
     this.name = name;
     this.category = category;
-    this.descriptionBullets = descriptionBullets;
+    this.description = description;
     this.mainImagePath = mainImagePath;
     this.isGallerySpaced = isGallerySpaced;
     this.gallery = gallery;
@@ -28,7 +28,7 @@ export class ProjectInputDto {
     const fieldsToValidate = [
       'name',
       'category',
-      'descriptionBullets',
+      'description',
       'mainImagePath',
       'isGallerySpaced',
       'gallery',

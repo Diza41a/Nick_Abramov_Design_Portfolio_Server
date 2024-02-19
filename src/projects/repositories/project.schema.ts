@@ -21,7 +21,7 @@ export const ProjectSchema = new Schema(
     name: String,
     category: String,
     dateCreated: Number,
-    descriptionBullets: [String],
+    description: String,
     mainImagePath: String,
     isGallerySpaced: Boolean,
     gallery: [ProjectGalleryRow],

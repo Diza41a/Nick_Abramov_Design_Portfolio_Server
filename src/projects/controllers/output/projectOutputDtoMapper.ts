@@ -8,7 +8,7 @@ export class ProjectOutputDtoMapper {
       projectDocument.name,
       projectDocument.category,
       projectDocument.dateCreated,
-      projectDocument.descriptionBullets,
+      projectDocument.description,
       projectDocument.mainImagePath,
       projectDocument.isGallerySpaced,
       projectDocument.gallery,

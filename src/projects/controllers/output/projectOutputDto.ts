@@ -5,7 +5,7 @@ export class ProjectOutputDto {
   name: string;
   category: string;
   dateCreated: number;
-  descriptionBullets: Array<string>;
+  description: string;
   mainImagePath: string;
   isGallerySpaced: boolean;
   gallery: Array<ProjectGalleryRow>;
@@ -15,7 +15,7 @@ export class ProjectOutputDto {
     name: string,
     category: string,
     dateCreated: number,
-    descriptionBullets: Array<string>,
+    description: string,
     mainImagePath: string,
     isGallerySpaced: boolean,
     gallery: Array<ProjectGalleryRow>,
@@ -24,7 +24,7 @@ export class ProjectOutputDto {
     this.name = name;
     this.category = category;
     this.dateCreated = dateCreated;
-    this.descriptionBullets = descriptionBullets;
+    this.description = description;
     this.mainImagePath = mainImagePath;
     this.isGallerySpaced = isGallerySpaced;
     this.gallery = gallery;

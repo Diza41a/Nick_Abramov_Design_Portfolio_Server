@@ -43,7 +43,7 @@ export class ProjectService {
   async create({
     name,
     category,
-    descriptionBullets,
+    description,
     mainImagePath,
     isGallerySpaced,
     gallery = [],
@@ -51,7 +51,7 @@ export class ProjectService {
     const projectInputDto = new ProjectInputDto(
       name,
       category,
-      descriptionBullets,
+      description,
       mainImagePath,
       isGallerySpaced,
       gallery,
@@ -75,7 +75,7 @@ export class ProjectService {
     {
       name,
       category,
-      descriptionBullets,
+      description,
       mainImagePath,
       isGallerySpaced,
       gallery,
@@ -88,8 +88,7 @@ export class ProjectService {
 
     projectDocument.name = name || projectDocument.name;
     projectDocument.category = category || projectDocument.category;
-    projectDocument.descriptionBullets =
-      descriptionBullets || projectDocument.descriptionBullets;
+    projectDocument.description = description || projectDocument.description;
     projectDocument.mainImagePath =
       mainImagePath || projectDocument.mainImagePath;
     projectDocument.isGallerySpaced =

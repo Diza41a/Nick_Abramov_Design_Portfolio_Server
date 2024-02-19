@@ -14,7 +14,7 @@ export interface ProjectDocument extends Document {
   name: string;
   category: string;
   dateCreated: number;
-  descriptionBullets: Array<string>;
+  description: string;
   mainImagePath: string;
   isGallerySpaced: boolean;
   gallery: Array<ProjectGalleryRow>;
