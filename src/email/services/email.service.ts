@@ -1,4 +1,4 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import { HttpException, Injectable, Logger } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
 import { MailInputDto } from '../controllers/input/emailInputDto';
 
@@ -22,6 +22,8 @@ export class MailService {
       const errorMessage = `Unprocessable entity, following errors in the DTO: [${errorMessages}]`;
       throw new HttpException(errorMessage, 422);
     }
+
+    Logger.log({ emailInputDto });
 
     this.mailerService
       .sendMail({
