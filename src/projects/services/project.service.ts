@@ -107,6 +107,23 @@ export class ProjectService {
     return projectOutputDto;
   }
 
+  async reorder(id: string, newOrder: number): Promise<ProjectOutputDto> {
+    const projectDocument = await this.projectsRepository.findById(id);
+    if (!projectDocument) {
+      throw new HttpException(`Project with id ${id} not found`, 404);
+    }
+
+    const reorderProjectDocument = await this.projectsRepository.reorder(
+      id,
+      newOrder,
+    );
+    const projectOutputDto = this.projectOutputDtoMapper.map(
+      reorderProjectDocument,
+    );
+
+    return projectOutputDto;
+  }
+
   async delete(id: string): Promise<ProjectOutputDto> {
     const projectDocument = await this.projectsRepository.findById(id);
     if (!projectDocument) {

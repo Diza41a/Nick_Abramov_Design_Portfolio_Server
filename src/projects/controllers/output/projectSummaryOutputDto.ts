@@ -1,5 +1,6 @@
 export class ProjectSummaryOutputDto {
   id: string;
+  order: number;
   name: string;
   category: string;
   dateCreated: number;
@@ -7,6 +8,7 @@ export class ProjectSummaryOutputDto {
 
   constructor(
     id: string,
+    order: number,
     name: string,
     category: string,
     dateCreated: number,

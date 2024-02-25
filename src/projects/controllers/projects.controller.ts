@@ -39,6 +39,14 @@ export class ProjectsController {
   }
 
   @UseGuards(AuthGuard)
+  @Put('/reorder')
+  reorder(
+    @Body() body: { id: string; newOrder: number },
+  ): Promise<ProjectOutputDto> {
+    return this.projectService.reorder(body.id, body.newOrder);
+  }
+
+  @UseGuards(AuthGuard)
   @Put('/:id')
   update(
     @Param() params: { id: string },

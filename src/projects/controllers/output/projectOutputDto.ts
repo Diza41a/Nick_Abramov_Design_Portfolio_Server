@@ -2,6 +2,7 @@ import { ProjectGalleryRow } from '../../../projects/repositories/project';
 
 export class ProjectOutputDto {
   id: string;
+  order: number;
   name: string;
   category: string;
   dateCreated: number;
@@ -12,6 +13,7 @@ export class ProjectOutputDto {
 
   constructor(
     id: string,
+    order: number,
     name: string,
     category: string,
     dateCreated: number,
@@ -21,6 +23,7 @@ export class ProjectOutputDto {
     gallery: Array<ProjectGalleryRow>,
   ) {
     this.id = id;
+    this.order = order;
     this.name = name;
     this.category = category;
     this.dateCreated = dateCreated;

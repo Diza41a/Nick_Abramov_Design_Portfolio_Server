@@ -18,6 +18,7 @@ const ProjectGalleryRow = new Schema({
 export const ProjectSchema = new Schema(
   {
     id: ObjectId,
+    order: Number,
     name: String,
     category: String,
     dateCreated: Number,

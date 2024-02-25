@@ -12,6 +12,7 @@ export type ProjectGalleryRow = {
 
 export interface ProjectDocument extends Document {
   name: string;
+  order: number;
   category: string;
   dateCreated: number;
   description: string;

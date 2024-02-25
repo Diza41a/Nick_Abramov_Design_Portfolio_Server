@@ -5,6 +5,7 @@ export class ProjectSummaryOutputDtoMapper {
   map(projectDocument: ProjectDocument): ProjectSummaryOutputDto {
     const projectSummaryOutputDto = new ProjectSummaryOutputDto(
       projectDocument._id,
+      projectDocument.order,
       projectDocument.name,
       projectDocument.category,
       projectDocument.dateCreated,
