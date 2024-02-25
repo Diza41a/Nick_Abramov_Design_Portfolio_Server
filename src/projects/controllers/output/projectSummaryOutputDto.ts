@@ -15,6 +15,7 @@ export class ProjectSummaryOutputDto {
     mainImagePath: string,
   ) {
     this.id = id;
+    this.order = order;
     this.name = name;
     this.category = category;
     this.dateCreated = dateCreated;
