@@ -22,7 +22,8 @@ export class ProjectRepository {
   }
 
   async create(project: ProjectDocument): Promise<ProjectDocument> {
-    const newProject = new this.projectModel({ ...project, order: 0 });
+    const newProject = new this.projectModel(project);
+    newProject.order = 0;
 
     // Update custom `order` tracker of projects to account for the newest item
     await this.projectModel.updateMany({}, { $inc: { order: 1 } });

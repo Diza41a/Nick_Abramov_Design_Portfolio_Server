@@ -61,6 +61,11 @@ export class ProjectService {
       const errorMessage = `Unprocessable entity, missing fields in the DTO: [${missingFields}]`;
       throw new HttpException(errorMessage, 400);
     }
+    const emptyFields = projectInputDto.getEmptyFields();
+    if (emptyFields.length > 0) {
+      const errorMessage = `Unprocessable entity, empty required fields in the DTO: [${emptyFields}]`;
+      throw new HttpException(errorMessage, 400);
+    }
     const projectDocument = this.projectInputDtoMapper.map(projectInputDto);
     const newProjectDocument =
       await this.projectsRepository.create(projectDocument);

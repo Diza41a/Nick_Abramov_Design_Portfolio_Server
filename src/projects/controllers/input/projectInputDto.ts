@@ -42,4 +42,14 @@ export class ProjectInputDto {
 
     return missingFields;
   }
+
+  getEmptyFields(): Array<string> {
+    const textFieldsToValidate = ['name', 'category', 'mainImagePath'];
+    const emptyTextFields = [];
+    for (const field of textFieldsToValidate) {
+      if (this[field] === '') emptyTextFields.push(field);
+    }
+
+    return emptyTextFields;
+  }
 }
