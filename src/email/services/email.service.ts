@@ -38,6 +38,8 @@ export class MailService {
       `,
       })
       .then(() => Logger.log('Email sent'))
-      .catch((err) => new HttpException(err, 500));
+      .catch((err) => {
+        throw new HttpException(err, 500);
+      });
   }
 }
