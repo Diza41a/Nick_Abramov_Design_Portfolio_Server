@@ -2,7 +2,7 @@ import { HttpException, Injectable, Logger } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
 import { MailInputDto } from '../controllers/input/emailInputDto';
 
-const { GMAIL_ADDRESS } = process.env;
+const { EMAIL_FROM, EMAIL_TO } = process.env;
 
 @Injectable()
 export class MailService {
@@ -23,11 +23,10 @@ export class MailService {
       throw new HttpException(errorMessage, 422);
     }
 
-    Logger.log({ emailInputDto });
-
     this.mailerService
       .sendMail({
-        to: GMAIL_ADDRESS,
+        from: EMAIL_FROM,
+        to: EMAIL_TO,
         subject: `New project submission from ${emailInputDto.name}`,
         html: `
         <h1>New project submission from ${emailInputDto.name}</h1>
@@ -38,7 +37,7 @@ export class MailService {
         <p>Company name: ${emailInputDto.companyName}</p>
       `,
       })
-      .then(() => console.log('Email sent'))
+      .then(() => Logger.log('Email sent'))
       .catch((err) => new HttpException(err, 500));
   }
 }

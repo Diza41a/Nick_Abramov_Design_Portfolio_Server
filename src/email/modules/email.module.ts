@@ -3,19 +3,19 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { MailController } from '../controllers/email.controller';
 import { MailService } from '../services/email.service';
 
-// const { GMAIL_ADDRESS, GMAIL_PASSWORD } = process.env;
+const { EMAIL_FROM, EMAIL_FROM_PASSWORD } = process.env;
 
 @Module({
   imports: [
     MailerModule.forRootAsync({
       useFactory: () => ({
         transport: {
-          host: 'smtp.mail.com',
+          host: 'smtp.zoho.com',
           port: 465,
-          secure: true,
+          secure: true, // ssl
           auth: {
-            user: '',
-            pass: '',
+            user: EMAIL_FROM,
+            pass: EMAIL_FROM_PASSWORD,
           },
         },
       }),
