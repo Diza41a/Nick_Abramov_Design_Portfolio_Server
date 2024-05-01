@@ -6,4 +6,4 @@ import { UploadService } from '../services/upload.service';
   controllers: [UploadController],
   providers: [UploadService],
 })
-export class ImgurModule {}
+export class UploadModule {}
