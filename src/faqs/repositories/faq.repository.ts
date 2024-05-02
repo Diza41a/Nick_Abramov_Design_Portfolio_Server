@@ -31,6 +31,14 @@ export class FAQRepository {
     return newFaq.save();
   }
 
+  update(id: string, faq: FAQDocument): Promise<FAQDocument> {
+    const updatedFaq = this.faqModel.findByIdAndUpdate(id, faq, {
+      new: true,
+    });
+
+    return updatedFaq;
+  }
+
   async delete(id: string): Promise<FAQDocument> {
     const deletedFaq = await this.faqModel.findByIdAndDelete(id);
     const deleteFaqOrder = deletedFaq.order;

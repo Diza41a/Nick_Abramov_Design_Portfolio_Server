@@ -52,4 +52,21 @@ export class FAQService {
 
     return faqOutputDto;
   }
+
+  async update(
+    id: string,
+    { question, answer }: FAQInputDto,
+  ): Promise<FAQOutputDto> {
+    const faqDocument = await this.faqRepository.findById(id);
+    if (!faqDocument) {
+      throw new HttpException(`FAQ with id ${id} not found`, 404);
+    }
+
+    question && (faqDocument.question = question);
+    answer && (faqDocument.answer = answer);
+
+    const updatedFaqDocument = await this.faqRepository.update(id, faqDocument);
+    const faqOutputDto = this.faqOutputDtoMapper.map(updatedFaqDocument);
+    return faqOutputDto;
+  }
 }

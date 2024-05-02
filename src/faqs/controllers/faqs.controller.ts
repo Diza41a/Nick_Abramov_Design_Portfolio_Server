@@ -2,10 +2,11 @@ import {
   Controller,
   Get,
   Post,
-  UseGuards,
-  Body,
+  Put,
   Delete,
+  Body,
   Param,
+  UseGuards,
 } from '@nestjs/common';
 import { FAQService } from '../services/faq.service';
 import { FAQOutputDto } from './output/faqOutputDto';
@@ -25,6 +26,15 @@ export class FAQsController {
   @Post('')
   create(@Body() faqInputDto: FAQInputDto): Promise<FAQOutputDto> {
     return this.faqService.create(faqInputDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Put('/:id')
+  update(
+    @Param() params: { id: string },
+    @Body() faqInputDto: FAQInputDto,
+  ): Promise<FAQOutputDto> {
+    return this.faqService.update(params.id, faqInputDto);
   }
 
   @UseGuards(AuthGuard)
