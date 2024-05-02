@@ -3,6 +3,7 @@ import { FAQSchema } from '../repositories/faq.schema';
 import { FAQOutputDtoMapper } from '../controllers/output/faqOutputDtoMapper';
 import { FAQRepository } from '../repositories/faq.repository';
 import { FAQService } from '../services/faq.service';
+import { FAQInputDtoMapper } from '../controllers/input/faqInputDtoMapper';
 
 export const faqProviders = [
   {
@@ -10,6 +11,7 @@ export const faqProviders = [
     useFactory: (connection: Connection) => connection.model('faqs', FAQSchema),
     inject: ['DATABASE_CONNECTION'],
   },
+  FAQInputDtoMapper,
   FAQOutputDtoMapper,
   FAQRepository,
   FAQService,

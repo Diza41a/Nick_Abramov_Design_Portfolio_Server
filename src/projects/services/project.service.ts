@@ -39,7 +39,7 @@ export class ProjectService {
     return projectOutputDto;
   }
 
-  // !: Admin only methods <- do not expose to public in production
+  // Admin methods
   async create({
     name,
     category,
