@@ -1,9 +1,9 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { FAQRepository } from '../repositories/faq.repository';
-import { FAQOutputDtoMapper } from '../controllers/output/faqOutputDtoMapper';
-import { FAQOutputDto } from '../controllers/output/faqOutputDto';
-import { FAQInputDto } from '../controllers/input/faqInputDto';
-import { FAQInputDtoMapper } from '../controllers/input/faqInputDtoMapper';
+import { FAQRepository } from './repositories/faq.repository';
+import { FAQOutputDtoMapper } from './controllers/output/faqOutputDtoMapper';
+import { FAQOutputDto } from './controllers/output/faqOutputDto';
+import { FAQInputDto } from './controllers/input/faqInputDto';
+import { FAQInputDtoMapper } from './controllers/input/faqInputDtoMapper';
 
 @Injectable()
 export class FAQService {

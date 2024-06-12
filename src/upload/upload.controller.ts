@@ -1,6 +1,6 @@
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '../../auth/services/auth.guard';
-import { UploadService } from '../services/upload.service';
+import { AuthGuard } from '../auth/services/auth.guard';
+import { UploadService } from './upload.service';
 
 @Controller('upload')
 export class UploadController {

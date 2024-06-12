@@ -9,12 +9,12 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { ProjectService } from '../services/project.service';
+import { ProjectService } from '../project.service';
 import { ProjectOutputDto } from './output/projectOutputDto';
 import { ProjectInputDto } from './input/projectInputDto';
 import { ProjectSummaryOutputDto } from './output/projectSummaryOutputDto';
 import { AuthGuard } from '../../auth/services/auth.guard';
-import { GetAllProjectsQueryDto } from './query/queryValidation.pipe';
+import { GetAllProjectsQueryDto } from './queryValidation.pipe';
 
 @Controller('projects')
 export class ProjectsController {

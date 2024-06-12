@@ -8,7 +8,7 @@ import {
   Param,
   UseGuards,
 } from '@nestjs/common';
-import { FAQService } from '../services/faq.service';
+import { FAQService } from '../faq.service';
 import { FAQOutputDto } from './output/faqOutputDto';
 import { AuthGuard } from '../../auth/services/auth.guard';
 import { FAQInputDto } from './input/faqInputDto';

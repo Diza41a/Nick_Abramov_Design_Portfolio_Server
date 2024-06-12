@@ -1,11 +1,11 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { ProjectRepository } from '../repositories/project.repository';
-import { ProjectOutputDtoMapper } from '../controllers/output/projectOutputDtoMapper';
-import { ProjectOutputDto } from '../controllers/output/projectOutputDto';
-import { ProjectInputDto } from '../controllers/input/projectInputDto';
-import { ProjectInputDtoMapper } from '../controllers/input/projectInputDtoMapper';
-import { ProjectSummaryOutputDtoMapper } from '../controllers/output/projectSummaryOutputDtoMapper';
-import { ProjectSummaryOutputDto } from '../controllers/output/projectSummaryOutputDto';
+import { ProjectRepository } from './repositories/project.repository';
+import { ProjectOutputDtoMapper } from './controllers/output/projectOutputDtoMapper';
+import { ProjectOutputDto } from './controllers/output/projectOutputDto';
+import { ProjectInputDto } from './controllers/input/projectInputDto';
+import { ProjectInputDtoMapper } from './controllers/input/projectInputDtoMapper';
+import { ProjectSummaryOutputDtoMapper } from './controllers/output/projectSummaryOutputDtoMapper';
+import { ProjectSummaryOutputDto } from './controllers/output/projectSummaryOutputDto';
 
 @Injectable()
 export class ProjectService {

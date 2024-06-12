@@ -1,6 +1,6 @@
 import { HttpException, Injectable, Logger } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
-import { MailInputDto } from '../controllers/input/emailInputDto';
+import { MailInputDto } from './controllers/input/emailInputDto';
 
 const { EMAIL_FROM, EMAIL_TO } = process.env;
 

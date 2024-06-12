@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MailerModule } from '@nestjs-modules/mailer';
-import { MailController } from '../controllers/email.controller';
-import { MailService } from '../services/email.service';
+import { MailController } from './controllers/email.controller';
+import { MailService } from './email.service';
 
 const { EMAIL_FROM, EMAIL_FROM_PASSWORD } = process.env;
 
