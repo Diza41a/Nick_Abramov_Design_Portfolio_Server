@@ -118,12 +118,12 @@ export class ProjectService {
       throw new HttpException(`Project with id ${id} not found`, 404);
     }
 
-    const reorderProjectDocument = await this.projectsRepository.reorder(
+    const reorderedProjectDocument = await this.projectsRepository.reorder(
       id,
       newOrder,
     );
     const projectOutputDto = this.projectOutputDtoMapper.map(
-      reorderProjectDocument,
+      reorderedProjectDocument,
     );
 
     return projectOutputDto;

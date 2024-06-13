@@ -29,6 +29,14 @@ export class FAQsController {
   }
 
   @UseGuards(AuthGuard)
+  @Put('/reorder')
+  reorder(
+    @Body() body: { id: string; newOrder: number },
+  ): Promise<FAQOutputDto> {
+    return this.faqService.reorder(body.id, body.newOrder);
+  }
+
+  @UseGuards(AuthGuard)
   @Put('/:id')
   update(
     @Param() params: { id: string },

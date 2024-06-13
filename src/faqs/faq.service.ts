@@ -42,6 +42,18 @@ export class FAQService {
     return faqOutputDto;
   }
 
+  async reorder(id: string, newOrder: number): Promise<FAQOutputDto> {
+    const faqDocument = await this.faqRepository.findById(id);
+    if (!faqDocument) {
+      throw new HttpException(`FAQ with id ${id} not found`, 404);
+    }
+
+    const reorderedFaqDocument = await this.faqRepository.reorder(id, newOrder);
+    const faqOutputDto = this.faqOutputDtoMapper.map(reorderedFaqDocument);
+
+    return faqOutputDto;
+  }
+
   async delete(id: string): Promise<FAQOutputDto> {
     const faqDocument = await this.faqRepository.findById(id);
     if (!faqDocument) {

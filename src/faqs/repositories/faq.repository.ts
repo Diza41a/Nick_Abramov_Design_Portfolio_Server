@@ -1,6 +1,7 @@
 import { Model } from 'mongoose';
 import { Inject, Injectable } from '@nestjs/common';
 import { FAQDocument } from './faq';
+import { reorderDocument } from '../../utils';
 
 @Injectable()
 export class FAQRepository {
@@ -29,6 +30,10 @@ export class FAQRepository {
     await this.faqModel.updateMany({}, { $inc: { order: 1 } });
 
     return newFaq.save();
+  }
+
+  async reorder(id: string, newOrder: number): Promise<FAQDocument> {
+    return reorderDocument(id, newOrder, this.faqModel);
   }
 
   update(id: string, faq: FAQDocument): Promise<FAQDocument> {
