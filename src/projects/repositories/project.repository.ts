@@ -1,6 +1,7 @@
 import { Model } from 'mongoose';
 import { Inject, Injectable } from '@nestjs/common';
 import { ProjectDocument } from './project';
+import { reorderDocument } from '../../utils';
 
 @Injectable()
 export class ProjectRepository {
@@ -40,42 +41,11 @@ export class ProjectRepository {
   }
 
   async reorder(id: string, newOrder: number): Promise<ProjectDocument> {
-    const projectDocument = await this.projectModel.findById(id);
-    const oldOrder = projectDocument.order;
-
-    if (oldOrder === newOrder) {
-      return;
-    }
-
-    const incAmount = newOrder < oldOrder ? 1 : -1;
-
-    const newOrderIsLessFilter = {
-      order: { $gte: newOrder, $lt: oldOrder },
-    };
-    const newOrderIsMoreFilter = {
-      order: { $gt: oldOrder, $lte: newOrder },
-    };
-    const filter = {
-      $and: [
-        { order: { $ne: oldOrder } },
-        newOrder < oldOrder ? newOrderIsLessFilter : newOrderIsMoreFilter,
-      ],
-    };
-
-    const update = { $inc: { order: incAmount } };
-
-    await this.projectModel.updateMany(filter, update);
-    const reorderedProject = await this.projectModel.findByIdAndUpdate(
+    return reorderDocument(
       id,
-      {
-        order: newOrder,
-      },
-      {
-        new: true,
-      },
-    );
-
-    return reorderedProject as unknown as Promise<ProjectDocument>;
+      newOrder,
+      this.projectModel,
+    ) as Promise<ProjectDocument>;
   }
 
   async delete(id: string): Promise<ProjectDocument> {
