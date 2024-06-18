@@ -44,7 +44,7 @@ export class ProjectService {
     name,
     category,
     description,
-    mainImagePath,
+    mainImage,
     isGallerySpaced,
     gallery = [],
   }: ProjectInputDto): Promise<ProjectOutputDto> {
@@ -52,7 +52,7 @@ export class ProjectService {
       name,
       category,
       description,
-      mainImagePath,
+      mainImage,
       isGallerySpaced,
       gallery,
     );
@@ -81,7 +81,7 @@ export class ProjectService {
       name,
       category,
       description,
-      mainImagePath,
+      mainImage,
       isGallerySpaced,
       gallery,
     }: ProjectInputDto,
@@ -94,8 +94,7 @@ export class ProjectService {
     projectDocument.name = name || projectDocument.name;
     projectDocument.category = category || projectDocument.category;
     projectDocument.description = description || projectDocument.description;
-    projectDocument.mainImagePath =
-      mainImagePath || projectDocument.mainImagePath;
+    projectDocument.mainImage = mainImage || projectDocument.mainImage;
     projectDocument.isGallerySpaced =
       isGallerySpaced !== undefined
         ? isGallerySpaced

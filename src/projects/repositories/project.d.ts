@@ -1,8 +1,14 @@
 import { Document } from 'mongoose';
 
+export type ProjectMainImage = {
+  path: string;
+  alt?: string;
+};
+
 export type ProjectGalleryCell = {
   type: 'image link' | 'direct video link' | 'embedded video link';
   path: string;
+  alt?: string;
 };
 
 export type ProjectGalleryRow = {
@@ -16,7 +22,7 @@ export interface ProjectDocument extends Document {
   category: string;
   dateCreated: number;
   description: string;
-  mainImagePath: string;
+  mainImage: ProjectMainImage;
   isGallerySpaced: boolean;
   gallery: Array<ProjectGalleryRow>;
 }

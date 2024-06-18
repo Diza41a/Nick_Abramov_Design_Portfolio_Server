@@ -1,4 +1,7 @@
-import { ProjectGalleryRow } from '../../../projects/repositories/project';
+import type {
+  ProjectGalleryRow,
+  ProjectMainImage,
+} from '../../../projects/repositories/project';
 
 export class ProjectOutputDto {
   id: string;
@@ -7,7 +10,7 @@ export class ProjectOutputDto {
   category: string;
   dateCreated: number;
   description: string;
-  mainImagePath: string;
+  mainImage: ProjectMainImage;
   isGallerySpaced: boolean;
   gallery: Array<ProjectGalleryRow>;
 
@@ -18,7 +21,7 @@ export class ProjectOutputDto {
     category: string,
     dateCreated: number,
     description: string,
-    mainImagePath: string,
+    mainImage: ProjectMainImage,
     isGallerySpaced: boolean,
     gallery: Array<ProjectGalleryRow>,
   ) {
@@ -28,7 +31,7 @@ export class ProjectOutputDto {
     this.category = category;
     this.dateCreated = dateCreated;
     this.description = description;
-    this.mainImagePath = mainImagePath;
+    this.mainImage = mainImage;
     this.isGallerySpaced = isGallerySpaced;
     this.gallery = gallery;
   }

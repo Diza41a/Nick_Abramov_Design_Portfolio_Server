@@ -10,7 +10,7 @@ export class ProjectOutputDtoMapper {
       projectDocument.category,
       projectDocument.dateCreated,
       projectDocument.description,
-      projectDocument.mainImagePath,
+      projectDocument.mainImage,
       projectDocument.isGallerySpaced,
       projectDocument.gallery,
     );

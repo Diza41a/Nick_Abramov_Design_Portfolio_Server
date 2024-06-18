@@ -1,10 +1,13 @@
-import { ProjectGalleryRow } from '../../../projects/repositories/project';
+import type {
+  ProjectGalleryRow,
+  ProjectMainImage,
+} from '../../../projects/repositories/project';
 
 export class ProjectInputDto {
   name?: string;
   category?: string;
   description?: string;
-  mainImagePath?: string;
+  mainImage?: ProjectMainImage;
   isGallerySpaced?: boolean;
   gallery?: Array<ProjectGalleryRow>;
 
@@ -12,14 +15,14 @@ export class ProjectInputDto {
     name: string,
     category: string,
     description: string,
-    mainImagePath: string,
+    mainImage: ProjectMainImage,
     isGallerySpaced: boolean,
     gallery: Array<ProjectGalleryRow>,
   ) {
     this.name = name;
     this.category = category;
     this.description = description;
-    this.mainImagePath = mainImagePath;
+    this.mainImage = mainImage;
     this.isGallerySpaced = isGallerySpaced;
     this.gallery = gallery;
   }
@@ -29,7 +32,7 @@ export class ProjectInputDto {
       'name',
       'category',
       'description',
-      'mainImagePath',
+      'mainImage',
       'isGallerySpaced',
       'gallery',
     ];
@@ -44,7 +47,7 @@ export class ProjectInputDto {
   }
 
   getEmptyFields(): Array<string> {
-    const textFieldsToValidate = ['name', 'category', 'mainImagePath'];
+    const textFieldsToValidate = ['name', 'category'];
     const emptyTextFields = [];
     for (const field of textFieldsToValidate) {
       if (this[field] === '') emptyTextFields.push(field);

@@ -1,10 +1,12 @@
+import { ProjectMainImage } from '../../repositories/project';
+
 export class ProjectSummaryOutputDto {
   id: string;
   order: number;
   name: string;
   category: string;
   dateCreated: number;
-  mainImagePath: string;
+  mainImage: ProjectMainImage;
 
   constructor(
     id: string,
@@ -12,13 +14,13 @@ export class ProjectSummaryOutputDto {
     name: string,
     category: string,
     dateCreated: number,
-    mainImagePath: string,
+    mainImage: ProjectMainImage,
   ) {
     this.id = id;
     this.order = order;
     this.name = name;
     this.category = category;
     this.dateCreated = dateCreated;
-    this.mainImagePath = mainImagePath;
+    this.mainImage = mainImage;
   }
 }

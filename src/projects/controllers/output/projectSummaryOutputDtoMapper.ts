@@ -1,4 +1,4 @@
-import { ProjectDocument } from '../../repositories/project';
+import type { ProjectDocument } from '../../repositories/project';
 import { ProjectSummaryOutputDto } from './projectSummaryOutputDto';
 
 export class ProjectSummaryOutputDtoMapper {
@@ -9,7 +9,7 @@ export class ProjectSummaryOutputDtoMapper {
       projectDocument.name,
       projectDocument.category,
       projectDocument.dateCreated,
-      projectDocument.mainImagePath,
+      projectDocument.mainImage,
     );
     return projectSummaryOutputDto;
   }

@@ -5,9 +5,15 @@ const {
   Schema: { ObjectId },
 } = mongoose;
 
+const ProjectMainImage = new Schema({
+  path: { type: String, required: true },
+  alt: String,
+});
+
 const ProjectGalleryCell = new Schema({
   type: String,
   path: String,
+  alt: String,
 });
 
 const ProjectGalleryRow = new Schema({
@@ -23,7 +29,7 @@ export const ProjectSchema = new Schema(
     category: String,
     dateCreated: Number,
     description: String,
-    mainImagePath: String,
+    mainImage: ProjectMainImage,
     isGallerySpaced: Boolean,
     gallery: [ProjectGalleryRow],
   },
