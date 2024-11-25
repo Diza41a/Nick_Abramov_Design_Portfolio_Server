@@ -6,13 +6,15 @@ import { ProjectRepository } from './repositories/project.repository';
 import { ProjectService } from './project.service';
 import { ProjectSummaryOutputDtoMapper } from './controllers/output/projectSummaryOutputDtoMapper';
 
+const ProjectsModelProvider = {
+  provide: 'PROJECTS_MODEL',
+  useFactory: (connection: Connection) =>
+    connection.model('projects', ProjectSchema),
+  inject: ['DATABASE_CONNECTION'],
+};
+
 export const projectProviders = [
-  {
-    provide: 'PROJECTS_MODEL',
-    useFactory: (connection: Connection) =>
-      connection.model('projects', ProjectSchema),
-    inject: ['DATABASE_CONNECTION'],
-  },
+  ProjectsModelProvider,
   ProjectInputDtoMapper,
   ProjectOutputDtoMapper,
   ProjectSummaryOutputDtoMapper,
