@@ -1,5 +1,15 @@
 import { Document } from 'mongoose';
 
+export type PhotoBlogProjectDateInfo = {
+  monthIndex: number;
+  year: number;
+};
+
+export type PhotoBlogProjectNameInfo = {
+  full: string;
+  short?: string;
+};
+
 export type PhotoBlogProjectMainImage = {
   path: string;
   alt?: string;
@@ -23,18 +33,9 @@ export type PhotoBlogProjectGallerySection = {
 };
 
 export interface PhotoBlogProjectDocument extends Document {
-  dateInfo: {
-    monthIndex: number;
-    year: number;
-  };
-  nameInfo: {
-    full: string;
-    short?: string;
-  };
+  dateInfo: PhotoBlogProjectDateInfo;
+  nameInfo: PhotoBlogProjectNameInfo;
   description: string;
-  mainImage: {
-    path: string;
-    alt?: string;
-  };
+  mainImage: PhotoBlogProjectMainImage;
   gallerySections: Array<PhotoBlogProjectGallerySection>;
 }

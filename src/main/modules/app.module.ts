@@ -4,8 +4,16 @@ import { FAQModule } from '../../faqs/faq.module';
 import { AuthModule } from '../../auth/modules/auth.module';
 import { MailModule } from '../../email/email.module';
 import { UploadModule } from '../../upload/upload.module';
+import { PhotoBlogProjectModule } from '../../photoBlogProjects/photoBlogProject.module';
 
 @Module({
-  imports: [ProjectModule, FAQModule, AuthModule, MailModule, UploadModule],
+  imports: [
+    ProjectModule,
+    PhotoBlogProjectModule,
+    FAQModule,
+    AuthModule,
+    MailModule,
+    UploadModule,
+  ],
 })
 export class AppModule {}

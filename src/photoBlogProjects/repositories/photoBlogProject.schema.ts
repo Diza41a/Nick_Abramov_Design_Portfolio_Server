@@ -5,6 +5,16 @@ const {
   Schema: { ObjectId },
 } = mongoose;
 
+const PhotoBlogProjectDateInfo = new Schema({
+  monthIndex: { type: Number, required: true },
+  year: { type: Number, required: true },
+});
+
+const PhotoBlogProjectNameInfo = new Schema({
+  full: { type: String, required: true },
+  short: String,
+});
+
 const PhotoBlogProjectMainImage = new Schema({
   path: { type: String, required: true },
   alt: String,
@@ -29,14 +39,8 @@ const PhotoBlogProjectGallerySection = new Schema({
 
 export const PhotoBlogProjectSchema = new Schema({
   id: ObjectId,
-  dateInfo: {
-    monthIndex: { type: Number, required: true },
-    year: { type: Number, required: true },
-  },
-  nameInfo: {
-    full: { type: String, required: true },
-    short: String,
-  },
+  dateInfo: PhotoBlogProjectDateInfo,
+  nameInfo: PhotoBlogProjectNameInfo,
   description: String,
   mainImage: PhotoBlogProjectMainImage,
   gallerySections: [PhotoBlogProjectGallerySection],

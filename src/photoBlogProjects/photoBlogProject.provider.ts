@@ -1,10 +1,10 @@
 import { Connection } from 'mongoose';
 import { PhotoBlogProjectSchema } from './repositories/photoBlogProject.schema';
-// import { PhotoBlogProjectInputDtoMapper }
-// import { PhotoBlogProjectOutputDtoMapper }
-// import { PhotoBlogProjectRepository }
-// import { PhotoBlogProjectService }
-// import { PhotoBlogProjectSummaryOutputDtoMapper }
+import { PhotoBlogProjectOutputDtoMapper } from './controllers/output/photoBlogProjectOutputDtoMapper';
+import { PhotoBlogProjectSummaryOutputDtoMapper } from './controllers/output/photoBlogProjectSummaryOutputDtoMapper';
+import { PhotoBlogProjectInputDtoMapper } from './controllers/input/photoBlogProjectInputDtoMapper';
+import { PhotoBlogProjectRepository } from './repositories/photoBlogProject.repository';
+import { PhotoBlogProjectService } from './photoBlogProject.service';
 
 const PhotoBlogProjectsModelProvider = {
   provide: 'PHOTO_BLOG_PROJECTS_MODEL',
@@ -13,11 +13,11 @@ const PhotoBlogProjectsModelProvider = {
   inject: ['DATABASE_CONNECTION'],
 };
 
-export const PhotoBlogProjectProviders = [
+export const photoBlogProjectProviders = [
   PhotoBlogProjectsModelProvider,
-  // PhotoBlogProjectInputDtoMapper,
-  // PhotoBlogProjectOutputDtoMapper,
-  // PhotoBlogProjectSummaryOutputDtoMapper,
-  // PhotoBlogProjectRepository,
-  // PhotoBlogProjectService,
+  PhotoBlogProjectOutputDtoMapper,
+  PhotoBlogProjectSummaryOutputDtoMapper,
+  PhotoBlogProjectInputDtoMapper,
+  PhotoBlogProjectRepository,
+  PhotoBlogProjectService,
 ];
