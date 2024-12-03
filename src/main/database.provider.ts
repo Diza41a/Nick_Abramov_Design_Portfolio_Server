@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 
-const { NODE_ENV, MONGODB_URI_PROD, MONGODB_URI_DEV, DB_NAME } = process.env;
+const { NODE_ENV, MONGODB_URI, MONGODB_URI_DEV, DB_NAME } = process.env;
 
 const CONNECTION_STRING =
-  NODE_ENV === 'production' ? MONGODB_URI_PROD : MONGODB_URI_DEV;
+  NODE_ENV === 'production' ? MONGODB_URI : MONGODB_URI_DEV;
 
 export const databaseProviders = [
   {
