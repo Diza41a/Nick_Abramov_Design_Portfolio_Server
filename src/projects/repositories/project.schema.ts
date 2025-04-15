@@ -10,15 +10,44 @@ const ProjectMainImage = new Schema({
   alt: String,
 });
 
-const ProjectGalleryCell = new Schema({
-  type: String,
-  path: String,
-  alt: String,
+const ProjectContentCell = new Schema(
+  {
+    type: {
+      type: String,
+      enum: [
+        'image link',
+        'direct video link',
+        'embedded video link',
+        'markdown',
+      ],
+      required: true,
+    },
+    path: String,
+    alt: String,
+    body: String,
+  },
+  { _id: false },
+);
+ProjectContentCell.pre('validate', function (next) {
+  const isMediaCell =
+    this.type === 'image link' ||
+    this.type === 'direct video link' ||
+    this.type === 'embedded video link';
+  const isMarkdownCell = this.type === 'markdown';
+
+  if (isMediaCell && !this.path) {
+    return next(new Error('Path is required for media cells'));
+  }
+  if (isMarkdownCell && !this.body) {
+    return next(new Error('Body is required for markdown cells'));
+  }
+
+  return next();
 });
 
-const ProjectGalleryRow = new Schema({
+const ProjectContentRow = new Schema({
   cellAmount: Number,
-  cells: [ProjectGalleryCell],
+  cells: [ProjectContentCell],
 });
 
 export const ProjectSchema = new Schema(
@@ -30,8 +59,8 @@ export const ProjectSchema = new Schema(
     dateCreated: Number,
     description: String,
     mainImage: ProjectMainImage,
-    isGallerySpaced: Boolean,
-    gallery: [ProjectGalleryRow],
+    isContentSpaced: Boolean,
+    content: [ProjectContentRow],
   },
   { collection: 'projects' },
 );

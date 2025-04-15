@@ -1,5 +1,5 @@
 import type {
-  ProjectGalleryRow,
+  ProjectContentRow,
   ProjectMainImage,
 } from '../../../projects/repositories/project';
 
@@ -8,23 +8,23 @@ export class ProjectInputDto {
   category?: string;
   description?: string;
   mainImage?: ProjectMainImage;
-  isGallerySpaced?: boolean;
-  gallery?: Array<ProjectGalleryRow>;
+  isContentSpaced?: boolean;
+  content?: Array<ProjectContentRow>;
 
   constructor(
     name: string,
     category: string,
     description: string,
     mainImage: ProjectMainImage,
-    isGallerySpaced: boolean,
-    gallery: Array<ProjectGalleryRow>,
+    isContentSpaced: boolean,
+    content: Array<ProjectContentRow>,
   ) {
     this.name = name;
     this.category = category;
     this.description = description;
     this.mainImage = mainImage;
-    this.isGallerySpaced = isGallerySpaced;
-    this.gallery = gallery;
+    this.isContentSpaced = isContentSpaced;
+    this.content = content;
   }
 
   getMissingFields(): Array<string> {
@@ -33,8 +33,8 @@ export class ProjectInputDto {
       'category',
       'description',
       'mainImage',
-      'isGallerySpaced',
-      'gallery',
+      'isContentSpaced',
+      'content',
     ];
     const missingFields = [];
     for (const field of fieldsToValidate) {

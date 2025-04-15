@@ -45,16 +45,16 @@ export class ProjectService {
     category,
     description,
     mainImage,
-    isGallerySpaced,
-    gallery = [],
+    isContentSpaced,
+    content = [],
   }: ProjectInputDto): Promise<ProjectOutputDto> {
     const projectInputDto = new ProjectInputDto(
       name,
       category,
       description,
       mainImage,
-      isGallerySpaced,
-      gallery,
+      isContentSpaced,
+      content,
     );
     const missingFields = projectInputDto.getMissingFields();
     if (missingFields.length > 0) {
@@ -82,8 +82,8 @@ export class ProjectService {
       category,
       description,
       mainImage,
-      isGallerySpaced,
-      gallery,
+      isContentSpaced,
+      content,
     }: ProjectInputDto,
   ): Promise<ProjectOutputDto> {
     const projectDocument = await this.projectsRepository.findById(id);
@@ -95,11 +95,11 @@ export class ProjectService {
     projectDocument.category = category || projectDocument.category;
     projectDocument.description = description || projectDocument.description;
     projectDocument.mainImage = mainImage || projectDocument.mainImage;
-    projectDocument.isGallerySpaced =
-      isGallerySpaced !== undefined
-        ? isGallerySpaced
-        : projectDocument.isGallerySpaced;
-    projectDocument.gallery = gallery || projectDocument.gallery;
+    projectDocument.isContentSpaced =
+      isContentSpaced !== undefined
+        ? isContentSpaced
+        : projectDocument.isContentSpaced;
+    projectDocument.content = content || projectDocument.content;
 
     const updatedProjectDocument = await this.projectsRepository.update(
       id,

@@ -1,5 +1,5 @@
 import type {
-  ProjectGalleryRow,
+  ProjectContentRow,
   ProjectMainImage,
 } from '../../../projects/repositories/project';
 
@@ -11,8 +11,8 @@ export class ProjectOutputDto {
   dateCreated: number;
   description: string;
   mainImage: ProjectMainImage;
-  isGallerySpaced: boolean;
-  gallery: Array<ProjectGalleryRow>;
+  isContentSpaced: boolean;
+  content: Array<ProjectContentRow>;
 
   constructor(
     id: string,
@@ -22,8 +22,8 @@ export class ProjectOutputDto {
     dateCreated: number,
     description: string,
     mainImage: ProjectMainImage,
-    isGallerySpaced: boolean,
-    gallery: Array<ProjectGalleryRow>,
+    isContentSpaced: boolean,
+    content: Array<ProjectContentRow>,
   ) {
     this.id = id;
     this.order = order;
@@ -32,7 +32,7 @@ export class ProjectOutputDto {
     this.dateCreated = dateCreated;
     this.description = description;
     this.mainImage = mainImage;
-    this.isGallerySpaced = isGallerySpaced;
-    this.gallery = gallery;
+    this.isContentSpaced = isContentSpaced;
+    this.content = content;
   }
 }

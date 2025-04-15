@@ -5,15 +5,21 @@ export type ProjectMainImage = {
   alt?: string;
 };
 
-export type ProjectGalleryCell = {
+export type ProjectMediaCell = {
   type: 'image link' | 'direct video link' | 'embedded video link';
   path: string;
   alt?: string;
 };
+export type ProjectMarkdownCell = {
+  type: 'markdown';
+  body: string;
+};
 
-export type ProjectGalleryRow = {
+export type ProjectContentCell = ProjectMediaCell | ProjectMarkdownCell;
+
+export type ProjectContentRow = {
   cellAmount: 1 | 2 | 3 | 4;
-  cells: Array<ProjectGalleryCell>;
+  cells: Array<ProjectContentCell>;
 };
 
 export interface ProjectDocument extends Document {
@@ -23,6 +29,6 @@ export interface ProjectDocument extends Document {
   dateCreated: number;
   description: string;
   mainImage: ProjectMainImage;
-  isGallerySpaced: boolean;
-  gallery: Array<ProjectGalleryRow>;
+  isContentSpaced: boolean;
+  content: Array<ProjectContentRow>;
 }

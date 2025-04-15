@@ -11,8 +11,8 @@ export class ProjectOutputDtoMapper {
       projectDocument.dateCreated,
       projectDocument.description,
       projectDocument.mainImage,
-      projectDocument.isGallerySpaced,
-      projectDocument.gallery,
+      projectDocument.isContentSpaced,
+      projectDocument.content,
     );
     return projectOutputDto;
   }
